@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
