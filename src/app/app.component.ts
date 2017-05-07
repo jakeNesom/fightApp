@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  public hp = 700;
+  public maxHp = 1000;
+  public damage = 1;
+  public progressPercentage = "70%";
+
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
   avatars = [{
@@ -37,5 +42,36 @@ export class AppComponent {
         // toggle avatar visibility
         this.avatars.forEach((x, i) => x.visible = (i === nextIndex));
     }
+
+    tapToKill() {
+      this.hp = this.hp - this.damage;
+      this.progressPercentageCheck();
+    }
+
+    progressPercentageCheck() {
+     let  hp = this.hp;
+     let max = this.maxHp;
+     
+     let newProgress = Math.round( (hp / max) * 100 );
+     console.log(newProgress);
+     
+     this.progressPercentage = newProgress.toString() + "%";
+
+    }
+
+    
+    // generate an id to store in javascript cookies 
+    // onLoad = we'll first check for an ID then make one if we don't have one stored
+    // id will be Put on node server mongodb via express RESTApi
+    makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 50; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
   
 }
